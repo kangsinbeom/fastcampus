@@ -1,17 +1,27 @@
 import Router from "./Router";
 import { app } from "firebaseApp";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function App() {
   const auth = getAuth(app);
-
+  const [init, setInit] = useState<boolean>(false);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setIsAuthenticated(true);
+      } else {
+        setIsAuthenticated(false);
+      }
+      setInit(true);
+    });
+  }, [auth]);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(
     !!auth?.currentUser
   );
   return (
     <>
-      <Router isAuthenticated={isAuthenticated} />
+      {init ? <Router isAuthenticated={isAuthenticated} /> : <div>loader</div>}
     </>
   );
 }

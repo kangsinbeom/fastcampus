@@ -8,7 +8,6 @@ import ProfilePage from "pages/profile";
 import SignupPage from "pages/signup";
 import LoginPage from "pages/login";
 import Layout from "pages/layout";
-import { useState } from "react";
 
 interface RouterProps {
   isAuthenticated: boolean;
@@ -21,8 +20,6 @@ const Router = ({ isAuthenticated }: RouterProps) => {
           <>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/signup" element={<SignupPage />} />
               <Route path="/profile" element={<ProfilePage />} />
             </Route>
             <Route path="/posts" element={<PostsPage />} />
