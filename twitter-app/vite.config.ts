@@ -9,6 +9,7 @@ export default defineConfig({
       pages: "/src/pages",
       components: "/src/components",
       firebaseApp: "/src/firebaseApp",
+      utils: "/src/utils",
     },
   },
 });
