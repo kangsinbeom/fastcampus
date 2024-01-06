@@ -1,19 +1,30 @@
+import HomePage from "pages/home";
+import NotificationsPage from "pages/notifications";
+import PostsPage from "pages/posts";
+import PostDetail from "pages/posts/detail";
+import PostEdit from "pages/posts/edit";
+import PostNew from "pages/posts/new";
+import PorfilePage from "pages/profile";
+import ProfileEdit from "pages/profile/edit";
+import SearchPage from "pages/search";
+import LoginPage from "pages/users/login";
+import SginupPage from "pages/users/signup";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 const Router = () => {
   return (
     <Routes>
-      <Route path="/" element={<div>hompage</div>} />
-      <Route path="/posts" element={<div>posts</div>} />
-      <Route path="/post/:id" element={<div>detail</div>} />
-      <Route path="/post/new" element={<div>new</div>} />
-      <Route path="/post/edit" element={<div>edit</div>} />
-      <Route path="/profile" element={<div>profile</div>} />
-      <Route path="/profile/edit" element={<div>profile eidt</div>} />
-      <Route path="/notification" element={<div>notification</div>} />
-      <Route path="/search" element={<div>notification</div>} />
-      <Route path="/users/login" element={<div>notification</div>} />
-      <Route path="/users/signup" element={<div>notification</div>} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/posts" element={<PostsPage />} />
+      <Route path="/post/:id" element={<PostDetail />} />
+      <Route path="/post/new" element={<PostNew />} />
+      <Route path="/post/edit" element={<PostEdit />} />
+      <Route path="/profile" element={<PorfilePage />} />
+      <Route path="/profile/edit" element={<ProfileEdit />} />
+      <Route path="/notifications" element={<NotificationsPage />} />
+      <Route path="/search" element={<SearchPage />} />
+      <Route path="/users/login" element={<LoginPage />} />
+      <Route path="/users/signup" element={<SginupPage />} />
       <Route path="*" element={<Navigate replace to="/" />} />
     </Routes>
   );
