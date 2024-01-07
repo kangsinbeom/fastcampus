@@ -27,6 +27,8 @@
     "pages/*": ["paes/*"],
     "components/*": ["components/*"],
     "firebaseApp/*": ["firebaseApp/*"],
-    "utils/*": ["utils/*"]
+    "utils/*": ["utils/*"],
+    "hooks/*": ["hooks/*"],
+    "contexts/*": ["contexts/*"]
   }
 }

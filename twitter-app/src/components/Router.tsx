@@ -11,24 +11,34 @@ import SearchPage from "pages/search";
 import LoginPage from "pages/users/login";
 import SginupPage from "pages/users/signup";
 
-const Router = () => {
+interface RouterProp {
+  isAuthentication: boolean;
+}
+
+const Router = ({ isAuthentication }: RouterProp) => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/posts" element={<PostsPage />} />
-        <Route path="/post/:id" element={<PostDetail />} />
-        <Route path="/post/new" element={<PostNew />} />
-        <Route path="/post/edit/:id" element={<PostEdit />} />
-        <Route path="/profile" element={<PorfilePage />} />
-        <Route path="/profile/edit" element={<ProfileEdit />} />
-        <Route path="/notifications" element={<NotificationsPage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/users/login" element={<LoginPage />} />
-        <Route path="/users/signup" element={<SginupPage />} />
-        <Route path="*" element={<Navigate replace to="/" />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      {isAuthentication ? (
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/posts" element={<PostsPage />} />
+          <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/post/new" element={<PostNew />} />
+          <Route path="/post/edit/:id" element={<PostEdit />} />
+          <Route path="/profile" element={<PorfilePage />} />
+          <Route path="/profile/edit" element={<ProfileEdit />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/users/login" element={<LoginPage />} />
+          <Route path="/users/signup" element={<SginupPage />} />
+          <Route path="*" element={<Navigate replace to="/users/login" />} />
+        </Routes>
+      )}
+    </>
   );
 };
 
