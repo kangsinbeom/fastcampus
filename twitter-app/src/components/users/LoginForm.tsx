@@ -17,7 +17,7 @@ const initialState = {
 };
 
 const LoginForm = () => {
-  const [form, onChange] = useInput(initialState);
+  const { form, onChange } = useInput(initialState);
   const navigate = useNavigate();
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

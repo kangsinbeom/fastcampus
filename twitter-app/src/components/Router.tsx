@@ -1,4 +1,4 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import HomePage from "pages/home";
 import NotificationsPage from "pages/notifications";
 import PostsPage from "pages/posts";
@@ -22,9 +22,9 @@ const Router = ({ isAuthentication }: RouterProp) => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/posts" element={<PostsPage />} />
-          <Route path="/post/:id" element={<PostDetail />} />
-          <Route path="/post/new" element={<PostNew />} />
-          <Route path="/post/edit/:id" element={<PostEdit />} />
+          <Route path="/posts/:id" element={<PostDetail />} />
+          <Route path="/posts/new" element={<PostNew />} />
+          <Route path="/posts/edit/:id" element={<PostEdit />} />
           <Route path="/profile" element={<PorfilePage />} />
           <Route path="/profile/edit" element={<ProfileEdit />} />
           <Route path="/notifications" element={<NotificationsPage />} />

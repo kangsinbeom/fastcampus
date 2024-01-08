@@ -7,4 +7,5 @@ export interface PostProps {
   profileUrl?: string;
   likeCount?: number;
   comments?: string[];
+  hashTags?: string[];
 }

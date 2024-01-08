@@ -1,60 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { postMocData } from "utils/mocData";
-import { FaUserCircle } from "react-icons/fa";
-import { AiFillHeart } from "react-icons/ai";
-import { FaRegComment } from "react-icons/fa";
-interface PostListProps {
-  handleDelete: () => void;
-}
+import { useContext, useEffect, useState } from "react";
 
-const PostList = ({ handleDelete }: PostListProps) => {
+import { PostProps } from "utils/type";
+import PostBox from "../posts/PostBox";
+import AuthContext from "contexts/AuthContext";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db } from "firebaseApp";
+
+const PostList = () => {
+  const [posts, setPosts] = useState<PostProps[]>([]);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user) {
+      let postsRef = collection(db, "posts");
+      let postQuery = query(postsRef, orderBy("createdAt", "desc"));
+
+      onSnapshot(postQuery, (snapShot) => {
+        let dataObj = snapShot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setPosts(dataObj as PostProps[]);
+      });
+    }
+  }, []);
+
   return (
     <div className="post">
-      {postMocData.map((post) => (
-        <div className="post__box" key={post.id}>
-          <Link to={`/posts/${post.id}`}>
-            <div className="post__box-profile">
-              <div className="post__flex">
-                {post.profileUrl ? (
-                  <img
-                    src={post.profileUrl}
-                    alt="profile"
-                    className="post__box-profile-img"
-                  />
-                ) : (
-                  <FaUserCircle className="post__box-profile-icon" />
-                )}
-                <div className="post__email">{post.email}</div>
-                <div className="post__createdAt">{post.createdAt}</div>
-              </div>
-              <div className="post__box-content">{post.content}</div>
-            </div>
-          </Link>
-          <div className="post__box-footer">
-            <>
-              <button
-                type="button"
-                className="post__delete"
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
-              <button type="button" className="post__edit">
-                <Link to={`posts/edit/${post.id}`}>Edit</Link>
-              </button>
-            </>
-            <button type="button" className="post__likes">
-              <AiFillHeart />
-              {post.likeCount || 0}
-            </button>
-            <button type="button" className="post__comments">
-              <FaRegComment />
-              {post.comments?.length || 0}
-            </button>
-          </div>
+      {posts.length > 0 ? (
+        posts.map((post) => <PostBox key={post.id} post={post} />)
+      ) : (
+        <div className="post__no-posts">
+          <div className="posts__text">게시글이 없습니다.</div>
         </div>
-      ))}
+      )}
     </div>
   );
 };

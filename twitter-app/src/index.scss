@@ -1,7 +1,8 @@
 $backgrond: #1e293b;
-$activeBg: #545961;
+$backgrondLight: #263340;
+$activeBg: #3c495f5f;
 $white: #ffffff;
-$border: #798990;
+$border: #708090;
 $primaryColor: #60a5fa;
 $activeBorder: #3b82f6;
 $grayText: #9ca3af;
@@ -38,6 +39,19 @@ body {
   box-shadow: 0 1px 2px 0 rgb(0, 0, 0, 0.05);
 }
 
+.transparent {
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+}
+
+.sticky {
+  width: 100%;
+  position: sticky;
+  max-width: 600px;
+  margin: 0 auto;
+  top: 0;
+}
+
 .footer {
   position: fixed;
   right: 0;
@@ -52,7 +66,7 @@ body {
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     background-color: transparent;
 
     button {
@@ -70,19 +84,48 @@ body {
 }
 
 .home {
+  &__search-div {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__search {
+    @extend .post-form__input;
+    background-color: $backgrondLight;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    padding: 12px;
+    width: 90% !important;
+    font-size: 15px;
+    font-weight: 600;
+
+    &:focus {
+      border: 1px solid $primaryColor;
+      background-color: $activeBg;
+    }
+  }
+  &__top {
+    @extend .transparent;
+    @extend .sticky;
+  }
+
   &__title {
+    background-color: transparent;
+    width: 90%;
     padding: 16px;
     font-weight: 700;
     font-size: 20px;
   }
 
   &__tabs {
+    background-color: transparent;
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   &__tab {
+    background-color: transparent;
     text-align: center;
     font-weight: 500;
     padding: 16px;
@@ -101,6 +144,42 @@ body {
 }
 
 .post-form {
+  &__input {
+    padding: 8px;
+    border: none;
+    resize: none;
+    outline: none;
+    margin-top: 8px;
+    width: calc(100% - 32px);
+  }
+
+  &__hashtags {
+    padding: 16px;
+    border-bottom: 1px solid $border;
+
+    &-outputs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 1px;
+      align-items: center;
+    }
+
+    &-tag {
+      font-size: 14px;
+      border: 1px solid $primaryColor;
+      color: $primaryColor;
+      border-radius: 10px;
+      padding: 2px 8px;
+      margin-right: 6px;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        color: $activeBorder;
+        border: 1px solid $activeBorder;
+      }
+    }
+  }
   &__textarea {
     min-height: 120px;
     display: block;
@@ -122,7 +201,7 @@ body {
     display: flex;
     padding: 0.75rem 1rem;
     justify-content: space-between;
-    border: 1px solid $border;
+    border-bottom: 1px solid $border;
 
     .post-form__file {
       display: flex;
@@ -145,6 +224,28 @@ body {
 }
 
 .post {
+  &__header {
+    button {
+      border: none;
+      padding: 19px;
+    }
+    &-btn {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+
+  &__no-posts {
+    padding: 16px;
+    .posts__text {
+      font-size: 14px;
+      border: 1px solid $gray;
+      padding: 16px;
+      border-radius: 4px;
+    }
+  }
+
   padding-bottom: 40px;
 
   &__flex {

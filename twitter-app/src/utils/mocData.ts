@@ -29,4 +29,25 @@ export const postMocData: PostProps[] = [
     createdAt: "2024-01-01",
     uid: "123123123",
   },
+  {
+    id: "5",
+    email: "test123@test.com",
+    content: "content",
+    createdAt: "2024-01-01",
+    uid: "123123123",
+  },
+  {
+    id: "6",
+    email: "test123@test.com",
+    content: "content",
+    createdAt: "2024-01-01",
+    uid: "123123123",
+  },
+  {
+    id: "7",
+    email: "test123@test.com",
+    content: "content",
+    createdAt: "2024-01-01",
+    uid: "123123123",
+  },
 ];
