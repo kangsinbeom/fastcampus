@@ -3,3 +3,15 @@ export const currentDate = new Date().toLocaleDateString("ko", {
   minute: "2-digit",
   second: "2-digit",
 });
+
+export const fileRead = (file: any) => {
+  const fileReader = new FileReader();
+  fileReader.readAsDataURL(file);
+  console.log(file);
+  const a = (fileReader.onloadend = (e: any) => {
+    const { result } = e.currentTarget;
+    return result;
+  });
+  console.log(a);
+  return a;
+};

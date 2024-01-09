@@ -23,7 +23,7 @@ const PostList = () => {
         setPosts(dataObj as PostProps[]);
       });
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="post">
@@ -31,7 +31,7 @@ const PostList = () => {
         posts.map((post) => <PostBox key={post.id} post={post} />)
       ) : (
         <div className="post__no-posts">
-          <div className="posts__text">게시글이 없습니다.</div>
+          <div className="post__text">게시글이 없습니다.</div>
         </div>
       )}
     </div>

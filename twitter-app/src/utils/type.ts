@@ -6,6 +6,26 @@ export interface PostProps {
   uid: string;
   profileUrl?: string;
   likeCount?: number;
-  comments?: string[];
+  comments?: CommentProps[];
   hashTags?: string[];
+  likes?: string[];
+  imageUrl?: string;
+}
+
+export interface CommentFormProps {
+  post: PostProps | null;
+}
+
+export interface CommentProps {
+  comment: string;
+  uid: string;
+  email: string;
+  createdAt: string;
+}
+
+export interface PostEditData {
+  post: PostProps | null;
+  hasTag: string;
+  imageFile: string | null;
+  isSubmitting: boolean;
 }

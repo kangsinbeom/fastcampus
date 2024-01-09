@@ -8,7 +8,9 @@ export const useInput = <T>(initalState: T) => {
       | React.ChangeEvent<HTMLInputElement>
       | React.ChangeEvent<HTMLTextAreaElement>
   ) => {
-    const { name, value } = e.target;
+    const {
+      target: { name, value },
+    } = e;
     const newForm = {
       ...form,
       [name]: value,

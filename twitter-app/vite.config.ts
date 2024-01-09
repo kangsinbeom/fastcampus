@@ -12,6 +12,7 @@ export default defineConfig({
       utils: "/src/utils",
       hooks: "/src/hooks",
       contexts: "/src/contexts",
+      apis: "/src/apis",
     },
   },
 });

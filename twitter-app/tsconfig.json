@@ -29,6 +29,7 @@
     "firebaseApp/*": ["firebaseApp/*"],
     "utils/*": ["utils/*"],
     "hooks/*": ["hooks/*"],
-    "contexts/*": ["contexts/*"]
+    "contexts/*": ["contexts/*"],
+    "apis/*": ["apis/*"]
   }
 }

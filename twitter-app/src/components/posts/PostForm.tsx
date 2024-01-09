@@ -1,11 +1,13 @@
 import AuthContext from "contexts/AuthContext";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "firebaseApp";
+import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { db, storage } from "firebaseApp";
 import { useInput } from "hooks/useInput";
 import { useContext, useState } from "react";
 import { FiImage } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { currentDate } from "utils/utilFunc";
+import { v4 as uuidv4 } from "uuid";
 
 const PostForm = () => {
   const { form, onChange, setForm } = useInput({ content: "" });
@@ -16,18 +18,31 @@ const PostForm = () => {
 
   const { user } = useContext(AuthContext);
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const key = `${user?.uid}/${uuidv4()}`;
+    const storageRef = ref(storage, key);
+
+    setIsSubmitting(true);
     e.preventDefault();
     try {
+      let imageUrl = "";
+      if (imageFile) {
+        const data = await uploadString(storageRef, imageFile, "data_url");
+        imageUrl = await getDownloadURL(data.ref);
+      }
+
       await addDoc(collection(db, "posts"), {
         content: form.content,
         createdAt: currentDate,
         email: user?.email,
         uid: user?.uid,
         hashTags: tags,
+        imageUrl,
       });
       setForm({ content: "" });
       setTags([]);
       setHashTag("");
+      setImageFile(null);
+      setIsSubmitting(false);
       toast.success("게시글을 생성했습니다.");
     } catch (error: any) {
       console.log(error);
@@ -106,21 +121,21 @@ const PostForm = () => {
               onChange={handleFileUpload}
             />
             {imageFile && (
-              <div className="post-fomr__attachment">
+              <div className="post-form__attachment">
                 <img
                   src={imageFile}
                   alt="attachment"
                   width={100}
                   height={100}
                 />
+                <button
+                  className="post-form__clear-btn"
+                  onClick={() => setImageFile(null)}
+                >
+                  Clear
+                </button>
               </div>
             )}
-            <button
-              className="post-form__clear-btn"
-              onClick={() => setImageFile(null)}
-            >
-              Clear
-            </button>
           </div>
           <input
             type="submit"
