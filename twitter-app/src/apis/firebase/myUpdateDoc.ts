@@ -1,7 +1,9 @@
 import { User } from "firebase/auth";
 import {
+  addDoc,
   arrayRemove,
   arrayUnion,
+  collection,
   deleteDoc,
   doc,
   updateDoc,
@@ -10,13 +12,24 @@ import { deleteObject, ref } from "firebase/storage";
 import { db, storage } from "firebaseApp";
 import { toast } from "react-toastify";
 import { PostProps } from "utils/type";
+import { currentDate, truncate } from "utils/utilFunc";
 
-export const myUnionDoc = async <T>(post: PostProps, data: T) => {
+export const myUnionDoc = async <T>(post: PostProps, user: User, data: T) => {
   try {
     const postRef = doc(db, "posts", post.id);
     await updateDoc(postRef, {
       comments: arrayUnion(data),
     });
+    if (user?.uid !== post.uid) {
+      await addDoc(collection(db, "notifications"), {
+        createdAt: currentDate,
+        uid: post.uid,
+        isRead: false,
+        url: `/posts/${post.id}`,
+        contnet: `${truncate(post.content)} 글에 댓글이 작성되었습니다`,
+      });
+    }
+
     toast.success("성공적으로 댓글을 생성했습니다");
   } catch (error) {
     console.error(error);

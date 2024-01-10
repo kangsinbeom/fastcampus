@@ -8,6 +8,7 @@ import AuthContext from "contexts/AuthContext";
 import { getAuth, signOut } from "firebase/auth";
 import { app } from "firebaseApp";
 import { toast } from "react-toastify";
+import { IoMdNotificationsOutline } from "react-icons/io";
 const MenuList = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -26,6 +27,10 @@ const MenuList = () => {
         <button type="button" onClick={() => navigate("/search")}>
           <AiOutlineSearch />
           Search
+        </button>
+        <button type="button" onClick={() => navigate("/notifications")}>
+          <IoMdNotificationsOutline />
+          Notifications
         </button>
         {user === null ? (
           <button type="button" onClick={() => navigate("/users/login")}>

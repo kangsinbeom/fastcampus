@@ -15,3 +15,7 @@ export const fileRead = (file: any) => {
   console.log(a);
   return a;
 };
+
+export const truncate = (str: string) => {
+  return str.length > 10 ? str.substring(0, 10) + "..." : str;
+};

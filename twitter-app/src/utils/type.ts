@@ -29,3 +29,16 @@ export interface PostEditData {
   imageFile: string | null;
   isSubmitting: boolean;
 }
+
+export interface FollowingUserData {
+  id: string;
+}
+
+export interface NotificationProps {
+  id: string;
+  uid: string;
+  url: string;
+  isRead: boolean;
+  content: string;
+  createdAt: string;
+}

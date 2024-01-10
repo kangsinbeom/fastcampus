@@ -21,8 +21,8 @@ const CommentForm = ({ post }: CommentFormProps) => {
       createdAt: currentDate,
     };
 
-    if (post)
-      myUnionDoc(post, commentObj).then(() =>
+    if (post && user)
+      myUnionDoc(post, user, commentObj).then(() =>
         setForm((prev) => ({ ...prev, comment: "" }))
       );
   };
