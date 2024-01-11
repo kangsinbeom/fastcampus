@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 이거 지정하는게 따로 해본 적이 있어서 보고 해봐야 할 듯 */
+@media only screen and (max-width: 600px) {
+}
