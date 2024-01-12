@@ -6,11 +6,11 @@ import NavbarItem from "./NavbarItem";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <div className="flex justify-between fixed w-full h-14 items-center top-0 shadow-sm">
-      <div className="font-semibold text-lg cursor-pointer text-blue-800 px-4">
+    <div className="fixed top-0 flex h-14 w-full items-center justify-between shadow-sm">
+      <div className="cursor-pointer px-4 text-lg font-semibold text-blue-800">
         nextmap
       </div>
-      <div className="flex px-4 gap-3 items-center">
+      <div className="flex items-center gap-3 px-4">
         <NavbarItem url="/stores" title="맛집 목록" />
         <NavbarItem url="/stores/new" title="맛집 등록" />
         <NavbarItem url="/users/likes" title="찜한 가게" />

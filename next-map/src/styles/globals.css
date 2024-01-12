@@ -2,6 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 이거 지정하는게 따로 해본 적이 있어서 보고 해봐야 할 듯 */
+.navbar {
+  @apply fixed top-0 flex h-[52px] w-full items-end justify-center bg-white shadow-md;
+}
+
+.navbar__logo {
+  @apply cursor-pointer px-[18px] py-0 text-lg font-semibold text-blue-800;
+}
+
+.navbar__list {
+  @apply flex items-center gap-3 px-[18px] py-0;
+}
+
+.navbar__button {
+  @apply hidden cursor-pointer;
+}
+
+.navbar__list--item {
+  @apply cursor-pointer;
+}
+
+.navbar__list--item:hover {
+  @apply text-gray-600;
+}
+
+.layout {
+  @apply pt-[52px];
+}
+
 @media only screen and (max-width: 600px) {
+  .navbar--mobile {
+    @apply fixed top-[52px] h-screen w-full bg-blue-800 text-white;
+  }
+
+  .navbar__list {
+    @apply hidden;
+  }
+
+  .navbar__button {
+    @apply block px-[18px] py-0;
+  }
+
+  .navbar__list--item--mobile {
+    @apply cursor-pointer;
+  }
+
+  .navbar__list--item--mobile:hover {
+    @apply text-gray-600;
+  }
+
+  .navbar__list--mobile {
+    @apply flex flex-col items-center gap-4 px-[18px] py-6;
+  }
+}
+
+.infowindow {
+  @apply block h-6 rounded-sm bg-blue-900 px-2 text-center text-sm leading-6 text-white;
 }

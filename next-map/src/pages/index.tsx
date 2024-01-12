@@ -1,13 +1,23 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import Layout from "@/components/Layout";
+/*global kakao*/
 
-const inter = Inter({ subsets: ["latin"] });
+import Map from "@/components/Map";
+import Markers from "@/components/Markers";
+
+declare global {
+  interface Window {
+    kakao: any;
+  }
+}
 
 export default function Home() {
   return (
-    <Layout>
-      <div>index</div>
-    </Layout>
+    <>
+      <Map />
+      <Markers />
+    </>
   );
+}
+
+export async function getStaticProps() {
+  const stores = await fetch();
 }

@@ -10,7 +10,7 @@ const NavbarItem = ({ url, title, className }: NavbarItemProps) => {
   return (
     <Link
       href={url}
-      className={`cursor-pointer hover:text-gray-700  ${className}`}
+      className={`cursor-pointer hover:text-gray-700 ${className}`}
     >
       {title}
     </Link>
