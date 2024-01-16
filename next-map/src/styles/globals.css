@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 .navbar {
-  @apply fixed top-0 flex h-[52px] w-full items-end justify-center bg-white shadow-md;
+  @apply flex justify-between items-center fixed w-full h-[52px] top-0 shadow-sm bg-white z-[100];
 }
 
 .navbar__logo {
-  @apply cursor-pointer px-[18px] py-0 text-lg font-semibold text-blue-800;
+  @apply text-blue-800 text-lg font-semibold cursor-pointer px-[18px] py-0;
 }
 
 .navbar__list {
-  @apply flex items-center gap-3 px-[18px] py-0;
+  @apply flex gap-3 items-center px-[18px] py-0;
 }
 
 .navbar__button {
@@ -32,7 +32,7 @@
 
 @media only screen and (max-width: 600px) {
   .navbar--mobile {
-    @apply fixed top-[52px] h-screen w-full bg-blue-800 text-white;
+    @apply fixed w-full text-white h-screen top-[52px] bg-blue-800 z-[100];
   }
 
   .navbar__list {
@@ -52,10 +52,10 @@
   }
 
   .navbar__list--mobile {
-    @apply flex flex-col items-center gap-4 px-[18px] py-6;
+    @apply flex flex-col gap-4 px-[18px] py-6;
   }
 }
 
 .infowindow {
-  @apply block h-6 rounded-sm bg-blue-900 px-2 text-center text-sm leading-6 text-white;
+  @apply bg-blue-900 text-white block text-sm text-center h-6 rounded-sm px-2 leading-6;
 }
