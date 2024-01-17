@@ -39,7 +39,7 @@ export async function GET(req: Request) {
       },
       {
         status: 200,
-      }
+      },
     );
   } else {
     const stores = await prisma.store.findMany({
@@ -47,11 +47,7 @@ export async function GET(req: Request) {
       where: {
         id: id ? parseInt(id) : {},
       },
-      include: {
-        likes: {
-          where: session ? { userId: session.user.id } : {},
-        },
-      },
+      include: {},
     });
 
     return NextResponse.json(id ? stores[0] : stores, {
@@ -69,9 +65,9 @@ export async function POST(req: Request) {
 
   const { data } = await axios.get(
     `https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURI(
-      formData.address
+      formData.address,
     )}`,
-    { headers }
+    { headers },
   );
 
   const result = await prisma.store.create({
@@ -90,9 +86,9 @@ export async function PUT(req: Request) {
 
   const { data } = await axios.get(
     `https://dapi.kakao.com/v2/local/search/address.json?query=${encodeURI(
-      formData.address
+      formData.address,
     )}`,
-    { headers }
+    { headers },
   );
 
   const result = await prisma.store.update({
