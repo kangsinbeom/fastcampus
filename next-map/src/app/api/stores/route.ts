@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import type { NextApiRequest, NextApiResponse } from "next";
-import { StoreApiResponse, StoreType } from "@/interface";
 import prisma from "@/db";
 import axios from "axios";
 
@@ -47,7 +45,11 @@ export async function GET(req: Request) {
       where: {
         id: id ? parseInt(id) : {},
       },
-      include: {},
+      include: {
+        likes: {
+          where: session ? { userId: session.user.id } : {},
+        },
+      },
     });
 
     return NextResponse.json(id ? stores[0] : stores, {

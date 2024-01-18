@@ -46,6 +46,7 @@ model Like {
   @@index([userId, storeId])
 }
 
+
 model Comment {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
