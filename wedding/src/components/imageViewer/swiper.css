@@ -1,0 +1,15 @@
+.swiper,
+.swiper-wrapper {
+  height: 100% !important;
+}
+
+.swiper-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.swiper-slider img {
+  width: 100%;
+}

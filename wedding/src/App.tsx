@@ -2,11 +2,17 @@ import { useEffect, useState } from 'react'
 import classNames from 'classnames/bind'
 import styles from './App.module.scss'
 import FullScreenMessage from './components/shared/fullScreenMessage'
+import Heading from './components/sections/heading'
+import { Wedding } from './models/wedding'
+import Video from './components/sections/video'
+import ImageGallery from './components/sections/imageGallery'
+import Intro from './components/sections/intro'
+import Invitaion from './components/sections/invitation'
 
 const cx = classNames.bind(styles)
 
 function App() {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<Wedding | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isError, setIsError] = useState<boolean>(false)
   // fetching wedding data
@@ -32,8 +38,30 @@ function App() {
   if (isError) {
     return <FullScreenMessage type="error" />
   }
+  if (data === null) {
+    return null
+  }
+  const {
+    date,
+    galleryImages,
+    groom,
+    bride,
+    location,
+    message: { intro, invitation },
+  } = data
   return (
     <div className={cx('container')}>
+      <Heading date={date} />
+      <Video />
+      <Intro
+        groomName={groom?.name}
+        brideName={bride?.name}
+        locataionName={location.name}
+        date={date}
+        message={intro}
+      />
+      <Invitaion message={invitation} />
+      <ImageGallery images={galleryImages} />
       <div>{JSON.stringify(data)}</div>
     </div>
   )
