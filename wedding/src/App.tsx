@@ -8,6 +8,9 @@ import Video from './components/sections/video'
 import ImageGallery from './components/sections/imageGallery'
 import Intro from './components/sections/intro'
 import Invitaion from './components/sections/invitation'
+import Calender from './components/sections/calender'
+import Map from './components/sections/map'
+import Contact from './components/sections/contact'
 
 const cx = classNames.bind(styles)
 
@@ -62,7 +65,9 @@ function App() {
       />
       <Invitaion message={invitation} />
       <ImageGallery images={galleryImages} />
-      <div>{JSON.stringify(data)}</div>
+      <Calender date={date} />
+      <Map location={location} />
+      <Contact />
     </div>
   )
 }

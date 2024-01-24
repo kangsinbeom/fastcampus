@@ -14,7 +14,7 @@ export interface Wedding {
   bride: Person & { parents: Person[] }
 }
 
-interface Location {
+export interface Location {
   lat: number
   lng: number
   name: string
