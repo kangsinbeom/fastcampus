@@ -1,5 +1,5 @@
-import styles from './styles.module.scss'
 import classNames from 'classnames/bind'
+import styles from './styles.module.scss'
 import Section from '../../shared/section'
 import Accodion from '../../shared/accordion'
 import { Person } from '../../../models/wedding'

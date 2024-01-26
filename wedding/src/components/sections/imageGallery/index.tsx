@@ -11,7 +11,10 @@ const ImageGallery = ({ images }: { images: string[] }) => {
         <ul className={cx('wrap-images')}>
           {images.map((src, index) => (
             <li key={index} className={cx('wrap-image')}>
-              <img src={src} alt="사진첩 이미지" />
+              <picture>
+                <source srcSet="" type="image/webP" />
+                <img src="" alt="" />
+              </picture>
             </li>
           ))}
         </ul>
