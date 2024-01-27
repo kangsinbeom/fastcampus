@@ -1,7 +1,9 @@
 import logo from './logo.svg'
 import './App.css'
+import { useAlertContext } from './contexts/AlertContext'
 
 function App() {
+  const { open } = useAlertContext()
   return (
     <div className="App">
       <header className="App-header">
