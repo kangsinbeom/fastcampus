@@ -1,11 +1,11 @@
-import { Color, colors } from '@/styles/colorPalette'
+import { Colors, colors } from '@/styles/colorPalette'
 import { Typography, typographyMap } from '@/styles/typography'
 import styled from '@emotion/styled'
 import { CSSProperties } from 'react'
 
 interface TextProps {
   typography?: Typography
-  color?: Color
+  color?: Colors
   display?: CSSProperties['display']
   textAlign?: CSSProperties['textAlign']
   fontWeigth?: CSSProperties['fontWeight']
