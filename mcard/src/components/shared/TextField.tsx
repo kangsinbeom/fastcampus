@@ -8,8 +8,8 @@ import Input from './Input'
 import Text from './Text'
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode
-  hasError: boolean
-  helpMessage: React.ReactNode
+  hasError?: boolean
+  helpMessage?: React.ReactNode
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
