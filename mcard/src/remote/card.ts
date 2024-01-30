@@ -14,7 +14,6 @@ import { last } from 'lodash'
 import { store } from './firebase'
 
 export const getCards = async (pageParam: QuerySnapshot<Card>) => {
-  console.log(pageParam)
   const cardQuery =
     pageParam == null
       ? query(collection(store, COLLECTION.CARD), limit(10))
@@ -27,7 +26,6 @@ export const getCards = async (pageParam: QuerySnapshot<Card>) => {
   const cardSnapShot = await getDocs(cardQuery)
 
   const lastVisible = cardSnapShot.docs[cardSnapShot.docs.length - 1]
-  console.log(lastVisible)
   const items = cardSnapShot.docs.map((doc) => ({
     id: doc.id,
     ...(doc.data() as Card),
