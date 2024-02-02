@@ -3824,7 +3824,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/qs@npm:*":
+"@types/qs@npm:*, @types/qs@npm:^6.9.11":
   version: 6.9.11
   resolution: "@types/qs@npm:6.9.11"
   checksum: 657a50f05b694d6fd3916d24177cfa0f3b8b87d9deff4ffa4dddcb0b03583ebf7c47b424b8de400270fb9a5cc1e9cf790dd82c833c6935305851e7da8ede3ff5
@@ -9988,6 +9988,7 @@ __metadata:
     "@types/jest": "npm:^27.0.1"
     "@types/lodash": "npm:^4.14.202"
     "@types/node": "npm:^16.7.13"
+    "@types/qs": "npm:^6.9.11"
     "@types/react": "npm:^18.0.0"
     "@types/react-dom": "npm:^18.0.0"
     "@types/testing-library__jest-dom": "npm:^6.0.0"
@@ -10002,9 +10003,11 @@ __metadata:
     framer-motion: "npm:^11.0.3"
     lodash: "npm:^4.17.21"
     prettier: "npm:^3.2.4"
+    qs: "npm:^6.11.2"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-infinite-scroll-component: "npm:^6.1.0"
+    react-intersection-observer: "npm:^9.6.0"
     react-query: "npm:^3.39.3"
     react-router-dom: "npm:^6.21.3"
     react-scripts: "npm:5.0.1"
@@ -11970,6 +11973,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"qs@npm:^6.11.2":
+  version: 6.11.2
+  resolution: "qs@npm:6.11.2"
+  dependencies:
+    side-channel: "npm:^1.0.4"
+  checksum: 4f95d4ff18ed480befcafa3390022817ffd3087fc65f146cceb40fc5edb9fa96cb31f648cae2fa96ca23818f0798bd63ad4ca369a0e22702fcd41379b3ab6571
+  languageName: node
+  linkType: hard
+
 "querystringify@npm:^2.1.1":
   version: 2.2.0
   resolution: "querystringify@npm:2.2.0"
@@ -12094,6 +12106,19 @@ __metadata:
   peerDependencies:
     react: ">=16.0.0"
   checksum: 8de02f178ae861880dddbd0c882dc70b55e21737b87fe428140d81a2c5d13c5eeba8a4fc260b1e86e4c556fdea333d6babaed55a9e5987a42b181b2d92f69cd8
+  languageName: node
+  linkType: hard
+
+"react-intersection-observer@npm:^9.6.0":
+  version: 9.6.0
+  resolution: "react-intersection-observer@npm:9.6.0"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+  checksum: 200ca442022028de6a609601d64ecfac7cf0fc92412ca5eea48c679402cb0af2202ffd61fb9b85e1d97635896dd45d81a2a1b48af5ec8552eed7ac0488c570b5
   languageName: node
   linkType: hard
 

@@ -8,6 +8,7 @@ import SigninPage from './pages/Signin'
 import SignupPage from './pages/Signup'
 import PrivateRoute from './components/auth/PrivateRoute'
 import ApplyPage from './pages/Apply'
+import ApplyDone from './pages/ApplyDone'
 function App() {
   return (
     <BrowserRouter>
@@ -26,7 +27,14 @@ function App() {
             </PrivateRoute>
           }
         />
-
+        <Route
+          path="/apply/done"
+          element={
+            <PrivateRoute>
+              <ApplyDone />
+            </PrivateRoute>
+          }
+        />
         <Route path="/test" Component={TestPage} />
       </Routes>
     </BrowserRouter>
