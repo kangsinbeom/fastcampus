@@ -1,4 +1,4 @@
-import { css } from '@emotion/react'
+import { css, SerializedStyles } from '@emotion/react'
 import Flex from './Flex'
 import Text from './Text'
 
@@ -9,6 +9,7 @@ interface ListRowProps {
   withArrow?: boolean
   onClick?: () => void
   as?: 'div' | 'li'
+  styles?: SerializedStyles
 }
 
 const ListRow = ({
@@ -17,12 +18,19 @@ const ListRow = ({
   right,
   withArrow,
   as = 'li',
+  onClick,
+  styles,
 }: ListRowProps) => {
   return (
-    <Flex as={as} css={listRowContainerStyles}>
-      <Flex css={listRowLeftStyles}>{left}</Flex>
+    <Flex
+      as={as}
+      css={[listRowContainerStyles, styles]}
+      align="center"
+      onClick={onClick}
+    >
+      {left && <Flex css={listRowLeftStyles}>{left}</Flex>}
       <Flex css={listRowContentsStyles}>{contents}</Flex>
-      <Flex>{right}</Flex>
+      {right && <Flex>{right}</Flex>}
       {withArrow ? <div>화살표</div> : null}
     </Flex>
   )
@@ -44,7 +52,7 @@ const ListRowTexts = ({
   title,
   subTitle,
 }: {
-  title: string
+  title: React.ReactNode
   subTitle: string
 }) => {
   return (
