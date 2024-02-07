@@ -90,7 +90,7 @@ const validate = (formValue: SigninValue) => {
   }
 
   if (formValue.password.length < 8) {
-    errors.email = '비밀번호를 8글자 이상 입력해주세요'
+    errors.password = '비밀번호를 8글자 이상 입력해주세요'
   }
   return errors
 }

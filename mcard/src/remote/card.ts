@@ -10,7 +10,6 @@ import {
   QuerySnapshot,
   startAfter,
 } from 'firebase/firestore'
-import { last } from 'lodash'
 import { store } from './firebase'
 
 export const getCards = async (pageParam: QuerySnapshot<Card>) => {

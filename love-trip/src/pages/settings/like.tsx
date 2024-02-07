@@ -1,0 +1,84 @@
+import useEditLike from '@/components/settings/like/hooks/useEditLike'
+import FixedBottomButton from '@/components/shared/FixedBottomButton'
+import ListRow from '@/components/shared/ListRow'
+import { useEffect, useState } from 'react'
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  DroppableProps,
+  DropResult,
+} from 'react-beautiful-dnd'
+import { Virtuoso } from 'react-virtuoso'
+const LikePage = () => {
+  const { data, isEdit, reOrder, save } = useEditLike()
+  const handleDragEndDrop = (result: DropResult) => {
+    if (result.destination) {
+      const from = result.source.index
+      const to = result.destination.index
+      return reOrder(from, to)
+    }
+    return
+  }
+  return (
+    <div>
+      <DragDropContext onDragEnd={handleDragEndDrop}>
+        <StricModeDroppable droppableId="likes">
+          {(droppableProps) => (
+            <ul
+              ref={droppableProps.innerRef}
+              {...droppableProps.droppableProps}
+            >
+              <Virtuoso
+                useWindowScroll
+                increaseViewportBy={0}
+                itemContent={(index, like) => {
+                  return (
+                    <Draggable
+                      key={like.id}
+                      draggableId={like.id}
+                      index={index}
+                    >
+                      {(draggableProps) => (
+                        <li
+                          ref={draggableProps.innerRef}
+                          {...draggableProps.draggableProps}
+                          {...draggableProps.dragHandleProps}
+                        >
+                          <ListRow
+                            as="div"
+                            contents={
+                              <ListRow.Texts
+                                title={like.order}
+                                subTitle={like.hotelName}
+                              />
+                            }
+                          />
+                        </li>
+                      )}
+                    </Draggable>
+                  )
+                }}
+                data={data}
+              />
+            </ul>
+          )}
+        </StricModeDroppable>
+      </DragDropContext>
+      {isEdit && <FixedBottomButton label="저장하기" onClick={save} />}
+    </div>
+  )
+}
+function StricModeDroppable({ children, ...props }: DroppableProps) {
+  const [enabled, setEnabled] = useState<boolean>(false)
+  useEffect(() => {
+    const animation = requestAnimationFrame(() => setEnabled(true))
+    return () => {
+      cancelAnimationFrame(animation)
+      setEnabled(false)
+    }
+  }, [])
+  if (!enabled) return null
+  return <Droppable {...props}>{children}</Droppable>
+}
+export default LikePage

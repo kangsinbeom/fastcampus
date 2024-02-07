@@ -1,7 +1,7 @@
 import { COLLECTION } from '@/constants'
 import { store } from '@/remote/firebase'
 import Button from '@shared/Button'
-import { collection, doc, getDocs, writeBatch } from 'firebase/firestore'
+import { collection, getDocs, writeBatch } from 'firebase/firestore'
 
 const RecommendHotelButton = () => {
   const handleButtonClick = async () => {

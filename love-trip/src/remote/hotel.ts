@@ -1,5 +1,6 @@
 import { COLLECTION } from '@/constants'
 import { Hotel } from '@/models/hotel'
+import { Room } from '@/models/room'
 import {
   collection,
   doc,
@@ -61,4 +62,21 @@ export const getRecommendHotels = async (hotelIds: string[]) => {
         ...doc.data(),
       }) as Hotel,
   )
+}
+
+export const getHotelWithRoom = async ({
+  hotelId,
+  roomId,
+}: {
+  hotelId: string
+  roomId: string
+}) => {
+  const hotelSnapshot = await getDoc(doc(store, COLLECTION.HOTEL, hotelId))
+  const roomSnapshot = await getDoc(
+    doc(hotelSnapshot.ref, COLLECTION.ROOM, roomId),
+  )
+  return {
+    hotel: hotelSnapshot.data() as Hotel,
+    room: roomSnapshot.data() as Room,
+  }
 }

@@ -32,7 +32,7 @@ const SigninPage = () => {
         }
       }
     },
-    [open],
+    [navigate, open],
   )
   return (
     <div>
