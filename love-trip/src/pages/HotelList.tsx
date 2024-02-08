@@ -5,7 +5,7 @@ import Top from '@/components/shared/Top'
 import useLike from '@/hooks/like/useLike'
 import { Fragment } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
-
+import withSuspense from '@/components/shared/hocs/withSuspense'
 const HotelList = () => {
   const { data: hotels, hasNextPage, loadMore } = useHotels()
   const { data: likes, mutate: like } = useLike()
@@ -44,4 +44,6 @@ const HotelList = () => {
   )
 }
 
-export default HotelList
+export default withSuspense(HotelList, {
+  fallback: <div>호텔리스트 불러오는 중</div>,
+})
