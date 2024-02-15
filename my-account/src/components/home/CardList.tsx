@@ -4,8 +4,8 @@ import Button from '../shared/Button';
 import ListRow from '../shared/ListRow';
 import Skeleton from '../shared/Skeleton';
 import Text from '../shared/Text';
-import withSuspense from '../shared/hocs/withSuspense';
 import useCards from './hooks/useCards';
+import withSuspense from '@/hooks/withSuspense';
 
 const CardList = () => {
   const navigate = useRouter();

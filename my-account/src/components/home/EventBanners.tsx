@@ -1,4 +1,3 @@
-import withSuspense from '@shared/hocs/withSuspense';
 import useEventBanners from './hooks/useEventBanners';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
@@ -7,10 +6,10 @@ import Text from '@shared/Text';
 import { css } from '@emotion/react';
 import Skeleton from '../shared/Skeleton';
 import Image from 'next/image';
+import withSuspense from '@/hooks/withSuspense';
 
 const EventBanners = () => {
   const { data } = useEventBanners();
-  console.log(data);
   return (
     <div style={{ padding: 24 }}>
       <Swiper spaceBetween={8}>

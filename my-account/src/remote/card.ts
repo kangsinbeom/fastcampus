@@ -6,7 +6,6 @@ import {
   getDoc,
   getDocs,
   limit,
-  orderBy,
   query,
   startAfter,
   where,
@@ -17,7 +16,7 @@ import { COLLECTIONS } from '@/constants/collection';
 export const getCards = async (pageParam?: QuerySnapshot<Card>) => {
   // null 인 경우는 첫 호출
   const cardQuery =
-    pageParam === null
+    pageParam == null
       ? query(collection(store, COLLECTIONS.CARD), limit(15))
       : query(
           collection(store, COLLECTIONS.CARD),

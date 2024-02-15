@@ -24,8 +24,12 @@ const CardListPage = () => {
     if (hasNextPage === false || isFetching) return;
     fetchNextPage();
   }, [fetchNextPage, hasNextPage, isFetching]);
-  if (!data) return null;
-  const cards = data?.pages.map(({ items }) => items).flat();
+  if (!data) {
+    return null;
+  }
+
+  const cards = data?.pages;
+  console.log(cards);
   return (
     <div>
       <Top title="추천카드" subTitle="회원님을 위해 준비했어요" />
@@ -40,7 +44,7 @@ const CardListPage = () => {
         scrollThreshold="100px"
       >
         <ul>
-          {cards.map((card, index) => (
+          {/* {cards.map((card, index) => (
             <ListRow
               key={card.id}
               contents={
@@ -50,7 +54,7 @@ const CardListPage = () => {
               withArrow={true}
               onClick={() => navigate.push(`/card/${card.id}`)}
             />
-          ))}
+          ))} */}
         </ul>
       </InfiniteScroll>
     </div>

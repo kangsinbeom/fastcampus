@@ -18,7 +18,7 @@ const CreditScoreChart = ({
     <Container width={width} height={height}>
       <div style={{ width, height, backgroundColor: 'red' }} />
       <Text bold={true} css={textStyles} typography="t6">
-        {addDelimiter(score)}
+        {score === 0 ? '???' : addDelimiter(score)}
       </Text>
     </Container>
   );
