@@ -3,8 +3,12 @@ import { CardListSkeleton } from '@/components/home/CardList';
 import { CreditScoreSkeleton } from '@/components/home/CreditScore';
 import { BannerSkeleton } from '@/components/home/EventBanners';
 import Spacing from '@/components/shared/Spacing';
-import { useSession } from 'next-auth/react';
+import { User } from '@/models/user';
+import { getAccount } from '@/remote/account';
+import { GetServerSidePropsContext } from 'next';
+import { getSession, useSession } from 'next-auth/react';
 import dynamic from 'next/dynamic';
+import { QueryClient, dehydrate } from 'react-query';
 
 const EventBanners = dynamic(() => import('@/components/home/EventBanners'), {
   loading: () => <BannerSkeleton />, // suspnese와 같이 사용할 때 로딩중에 그려줄 것을 보여줌 레이아웃 시프트도 방지할 수 있다
@@ -33,4 +37,19 @@ export default function Home() {
       그렇기에 클라이언트에서 조작할 필요가 없다 === 다이나믹을 쓸 필요가 없다. */}
     </>
   );
+}
+
+async function getServerSideProps(context: GetServerSidePropsContext) {
+  const session = await getSession(context);
+  if (!!session && !!session.user) {
+    const client = new QueryClient();
+    await client.prefetchQuery(['account', (session.user as User).id], () =>
+      getAccount((session.user as User).id)
+    );
+    return {
+      props: {
+        dehydratedState: JSON.parse(JSON.stringify(dehydrate(client))),
+      },
+    };
+  }
 }

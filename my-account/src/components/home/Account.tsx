@@ -1,59 +1,80 @@
+import useAccount from '@/hooks/useAccount';
+import useUser from '@/hooks/useUser';
+import addDelimiter from '@/utils/addDelimiter';
 import Button from '@shared/Button';
 import Flex from '@shared/Flex';
 import Spacing from '@shared/Spacing';
 import Text from '@shared/Text';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Account = () => {
-  const hasAccount = false;
-  // 계좌를 보유중일 때
-  if (hasAccount) {
+  const { data: account } = useAccount();
+  const user = useUser();
+
+  if (!account) {
     return (
       <div style={{ padding: 24 }}>
-        <Flex justify="space-between" align="center">
+        {' '}
+        <Flex justify="space-between">
           <Flex direction="column">
-            <Text typography="t6" color="gray600">
-              올라프 회원님의 자산
+            <Text bold={true} style={{ whiteSpace: 'pre-wrap' }}>
+              {'계좌 개설이\n더 쉽고 빨라졌어요'}
             </Text>
-            <Spacing size={2} />
-            <Text typography="t3" bold={true}>
-              7,000원
-            </Text>
+            <Spacing size={8} />
+            <Link href="/account/new">
+              <Button>3분만에 개설하기</Button>
+            </Link>
           </Flex>
-          <Button>분석</Button>
+          <Image
+            src="https://cdn4.iconfinder.com/data/icons/business-and-finance-colorful-free-hand-drawn-set/100/money_dollars-256.png"
+            alt=""
+            width={80}
+            height={80}
+          />
         </Flex>
       </div>
     );
   }
-  // 계좌를 보유하지 않고 있다 (개설중이거나 완료되지 않았다)
-
-  const 계좌개설상태 = 'READY';
-  const title =
-    계좌개설상태 === 'READY'
-      ? '만들고 있으신\n계좌가 있으시군요'
-      : '계좌 개설이\n더 쉽고 빨라졌어요';
-  const buttonLabel =
-    계좌개설상태 === 'READY' ? '이어만들기' : '3분만에 개설하기';
+  if (account.status === 'READY') {
+    return (
+      <div style={{ padding: 24 }}>
+        {' '}
+        <Flex justify="space-between">
+          <Flex direction="column">
+            <Text bold={true} style={{ whiteSpace: 'pre-wrap' }}>
+              계죄 개설 심사중입니다
+            </Text>
+            <Spacing size={8} />
+          </Flex>
+          <Image
+            src="https://cdn4.iconfinder.com/data/icons/business-and-finance-colorful-free-hand-drawn-set/100/money_dollars-256.png"
+            alt=""
+            width={80}
+            height={80}
+          />
+        </Flex>
+      </div>
+    );
+  }
+  // 계좌를 보유중일 때
   return (
     <div style={{ padding: 24 }}>
-      {' '}
-      <Flex justify="space-between">
+      <Flex justify="space-between" align="center">
         <Flex direction="column">
-          <Text bold={true} style={{ whiteSpace: 'pre-wrap' }}>
-            {title}
+          <Text typography="t6" color="gray600">
+            {user?.name} 회원님의 자산
           </Text>
-          <Spacing size={8} />
-          <Button>{buttonLabel}</Button>
+          <Spacing size={2} />
+          <Text typography="t3" bold={true}>
+            {addDelimiter(account.balance)}원
+          </Text>
         </Flex>
-        <Image
-          src="https://cdn4.iconfinder.com/data/icons/business-and-finance-colorful-free-hand-drawn-set/100/money_dollars-256.png"
-          alt=""
-          width={80}
-          height={80}
-        />
+        <Link href="/account">
+          <Button>분석</Button>
+        </Link>
       </Flex>
     </div>
   );
 };
-
 export default Account;

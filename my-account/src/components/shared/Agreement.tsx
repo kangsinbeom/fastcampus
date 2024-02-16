@@ -1,15 +1,15 @@
-import { css } from '@emotion/react'
-import { MouseEvent } from 'react'
-import { colors } from '../../styles/colorPalette'
-import Flex from './Flex'
-import Text from './Text'
+import { css } from '@emotion/react';
+import { MouseEvent } from 'react';
+import { colors } from '../../styles/colorPalette';
+import Flex from './Flex';
+import Text from './Text';
 
 function Agreenemt({ children }: { children: React.ReactNode }) {
   return (
-    <Flex as="li" direction="column" css={argreementContainerStyles}>
+    <Flex as="ul" direction="column" css={argreementContainerStyles}>
       {children}
     </Flex>
-  )
+  );
 }
 
 function AgreementTitle({
@@ -17,16 +17,16 @@ function AgreementTitle({
   checked,
   onChange,
 }: {
-  children: React.ReactNode
-  checked: boolean
-  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void
+  children: React.ReactNode;
+  checked: boolean;
+  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void;
 }) {
   return (
     <Flex as="li" onClick={(e) => onChange(e, !checked)}>
       <IconCheck checked={checked} withCircle={true} />
       <Text bold={true}>{children}</Text>
     </Flex>
-  )
+  );
 }
 
 function AgreementDescription({
@@ -35,10 +35,10 @@ function AgreementDescription({
   onChange,
   link,
 }: {
-  children: React.ReactNode
-  checked: boolean
-  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void
-  link?: string
+  children: React.ReactNode;
+  checked: boolean;
+  onChange: (e: MouseEvent<HTMLElement>, checked: boolean) => void;
+  link?: string;
 }) {
   return (
     <Flex as="li">
@@ -52,18 +52,18 @@ function AgreementDescription({
         </a>
       ) : null}
     </Flex>
-  )
+  );
 }
 
-Agreenemt.Title = AgreementTitle
-Agreenemt.Description = AgreementDescription
+Agreenemt.Title = AgreementTitle;
+Agreenemt.Description = AgreementDescription;
 
 function IconCheck({
   checked,
   withCircle = false,
 }: {
-  checked: boolean
-  withCircle?: boolean
+  checked: boolean;
+  withCircle?: boolean;
 }) {
   return (
     <svg id="Layer_1" version="1.1" viewBox="0 0 64 64" width={24} height={24}>
@@ -84,7 +84,7 @@ function IconCheck({
         </g>
       </g>
     </svg>
-  )
+  );
 }
 
 const argreementContainerStyles = css`
@@ -93,6 +93,6 @@ const argreementContainerStyles = css`
   & li {
     cursor: pointer;
   }
-`
+`;
 
-export default Agreenemt
+export default Agreenemt;
