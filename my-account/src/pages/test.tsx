@@ -4,6 +4,7 @@ import Text from '@/components/shared/Text';
 import CardListAddButton from '@/components/test/CardListAddButton';
 import EventAddBannerButton from '@/components/test/EventAddBannerButton';
 import EventForm from '@/components/test/EventForm';
+import FAQAddButton from '@/components/test/FAQAddButton';
 import TransactionForm from '@/components/test/TransactionForm';
 
 const TestPage = () => {
@@ -31,6 +32,13 @@ const TestPage = () => {
       />
       <Text bold={true}>입출금 테스트</Text>
       <TransactionForm />
+      <Spacing
+        size={8}
+        backgroundColor="gray100"
+        style={{ margin: '20px 0' }}
+      />
+      <Text bold={true}>FAQ 테스트</Text>
+      <FAQAddButton />
     </Flex>
   );
 };

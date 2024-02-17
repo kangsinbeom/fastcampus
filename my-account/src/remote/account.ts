@@ -52,3 +52,10 @@ export const updateAccountBalance = (userId: string, balance: number) => {
   const snapshot = doc(collection(store, COLLECTIONS.ACCOUNT), userId);
   return updateDoc(snapshot, { balance });
 };
+
+// 약관 철회를 하는 remote
+//  termIds = [1, 2, 3] => [1, 3]
+export const updateTerms = (userId: string, termIds: string[]) => {
+  const snapshot = doc(collection(store, COLLECTIONS.TERMS), userId);
+  return updateDoc(snapshot, { termIds });
+};

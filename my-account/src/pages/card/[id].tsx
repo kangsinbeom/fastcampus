@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Flex from '@/components/shared/Flex';
 import Text from '@/components/shared/Text';
 import dynamic from 'next/dynamic';
+import SEO from '@/components/shared/SEO';
 const FixedBottomButton = dynamic(
   () => import('@/components/shared/FixedBottomButton'),
   { ssr: false }
@@ -31,7 +32,8 @@ const CardDetailPage = ({ initialCard }: CardDetailPageProps) => {
     promotion != null ? removeHtmlTags(promotion.title) : tags.join(',');
   return (
     <div>
-      <Top title="" subTitle={subTitle} />
+      <SEO title={`${corpName} ${name}`} description={subTitle} image="" />
+      <Top title={`${corpName} ${name}`} subTitle={subTitle} />
       <ul>
         {benefit.map((text, index) => (
           <motion.li
