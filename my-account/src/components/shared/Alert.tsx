@@ -1,16 +1,16 @@
-import { colors } from '@styles/colorPalette'
-import styled from '@emotion/styled'
-import Button from './Button'
-import Dimmed from './Dimmed'
-import Flex from './Flex'
-import Text from './Text'
+import { colors } from '@styles/colorPalette';
+import styled from '@emotion/styled';
+import Button from './Button';
+import Dimmed from './Dimmed';
+import Flex from './Flex';
+import Text from './Text';
 
 interface AlertProps {
-  open?: boolean
-  title: React.ReactNode
-  description?: React.ReactNode
-  buttonLabel?: string
-  onButtonClick: () => void
+  open?: boolean;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  buttonLabel?: string;
+  onButtonClick: () => void;
 }
 
 const Alert = ({
@@ -21,7 +21,7 @@ const Alert = ({
   onButtonClick,
 }: AlertProps) => {
   if (!open) {
-    return null
+    return null;
   }
   return (
     <Dimmed>
@@ -46,8 +46,8 @@ const Alert = ({
         </Flex>
       </AlertContainer>
     </Dimmed>
-  )
-}
+  );
+};
 const AlertContainer = styled.div`
   position: absolute;
   left: 50%;
@@ -60,6 +60,6 @@ const AlertContainer = styled.div`
   width: 320px;
   padding: 24px;
   box-sizing: border-box;
-`
+`;
 
-export default Alert
+export default Alert;

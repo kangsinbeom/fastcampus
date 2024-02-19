@@ -4,19 +4,19 @@ import {
   ButtonSize,
   buttonSizeMap,
   buttonWeakMap,
-} from '@/styles/button'
-import { css } from '@emotion/react'
-import styled from '@emotion/styled'
-import Flex from './Flex'
-import Spacing from './Spacing'
-import Text from './Text'
+} from '@/styles/button';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import Flex from './Flex';
+import Spacing from './Spacing';
+import Text from './Text';
 
 interface ButtonProps {
-  color?: ButtonColor
-  size?: ButtonSize
-  weak?: boolean
-  full?: boolean
-  disabled?: boolean
+  color?: ButtonColor;
+  size?: ButtonSize;
+  weak?: boolean;
+  full?: boolean;
+  disabled?: boolean;
 }
 const BaseButton = styled.button<ButtonProps>(
   {
@@ -41,15 +41,15 @@ const BaseButton = styled.button<ButtonProps>(
           opacity: 0.26;
           cursor: initial;
         `
-      : undefined,
-)
+      : undefined
+);
 
 const ButtonGroup = ({
   title,
   children,
 }: {
-  title?: string
-  children: React.ReactNode
+  title?: string;
+  children: React.ReactNode;
 }) => {
   return (
     <Flex direction="column">
@@ -63,8 +63,8 @@ const ButtonGroup = ({
       )}
       <Flex css={buttonGroupStyles}>{children}</Flex>
     </Flex>
-  )
-}
+  );
+};
 
 const buttonGroupStyles = css`
   flex-wrap: wrap;
@@ -72,10 +72,10 @@ const buttonGroupStyles = css`
   & button {
     flex: 1;
   }
-`
+`;
 
 const Button = BaseButton as typeof BaseButton & {
-  Group: typeof ButtonGroup
-}
-Button.Group = ButtonGroup
-export default Button
+  Group: typeof ButtonGroup;
+};
+Button.Group = ButtonGroup;
+export default Button;
