@@ -1,6 +1,2 @@
-function sum(a: number, b: number) {
-  return a + b;
-}
-export default {
-  sum,
-};
+export * as vars from "./variables";
+export * as classes from "./classes";

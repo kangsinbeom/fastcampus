@@ -8,16 +8,18 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./themes.css": "./dist/themes.css"
   },
   "scripts": {
-    "build": "npm run clean && npm run build:js && npm run build:type",
+    "build": "yarn clean && yarn build:js && yarn build:type && yarn build:css",
     "build:js": "node build.js",
-    "build:type": "tsc --emitDeclarationOnly",
+    "build:type": "yarn tsc --emitDeclarationOnly",
+    "build:css": "node ./scripts/build-css-module.js",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "esbuild": "^0.16.17",
+    "@fastcampus/esbuild-config": "workspace:^",
     "typescript": "^5.3.3"
   }
 }
