@@ -1,5 +1,5 @@
 {
-  "name": "@fastcampus/react-components-layout",
+  "name": "@fastcampus/react-hooks-toggle",
   "version": "0.0.1",
   "type": "module",
   "main": "dist/index.js",
@@ -8,8 +8,7 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    },
-    "./style.css": "./dist/index.css"
+    }
   },
   "scripts": {
     "build": "yarn clean && yarn build:js && yarn build:type",
@@ -20,19 +19,13 @@
   },
   "devDependencies": {
     "@fastcampus/esbuild-config": "workspace:^",
-    "@fastcampus/themes": "workspace:^",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@vanilla-extract/css": "^1.14.1",
-    "@vanilla-extract/esbuild-plugin": "^2.3.5",
-    "@vanilla-extract/recipes": "^0.5.1",
-    "@vanilla-extract/sprinkles": "^1.6.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "@fastcampus/themes": "workspace:^",
     "react": "*"
   },
   "dependencies": {

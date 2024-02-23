@@ -1,13 +1,13 @@
 import * as React from "react";
-import { BoxProps } from "./types";
-import { clsx } from "clsx";
+import { HeadingProps } from "./types";
 import { BaseStyle, StyleSprinkles } from "../core/style.css";
 import { extractSprinkleProps } from "../utils/properties";
 import { vars } from "@fastcampus/themes";
+import { clsx } from "clsx";
+import { textStyle } from "./style.css";
 
-const Box = (props: BoxProps, ref: React.Ref<HTMLElement>) => {
-  const { as = "div", color, background, children } = props;
-  // 원하는 속성을 받을 수 있게 createElement를 사용하고 그냥 div만들어서 사용하지 않음
+const Heading = (props: HeadingProps, ref: React.Ref<HTMLElement>) => {
+  const { as = "h1", children, color = "gray", background, fontSize } = props;
   return React.createElement(
     as,
     {
@@ -18,17 +18,23 @@ const Box = (props: BoxProps, ref: React.Ref<HTMLElement>) => {
         StyleSprinkles(
           extractSprinkleProps(props, Array.from(StyleSprinkles.properties)),
         ),
+        textStyle({
+          fontSize,
+        }),
         props.className,
       ]),
       style: {
         color: color && vars.colors.$scale?.[color]?.[700],
         background: background && vars.colors.$scale?.[background]?.[100],
         ...props.style,
-      },
+      },k
       ...props,
     },
     children,
   );
 };
-const _Box = React.forwardRef(Box);
-export { _Box as Box };
+
+const _Heading = React.forwardRef(Heading);
+export { _Heading as Heading };
+
+export default Heading;

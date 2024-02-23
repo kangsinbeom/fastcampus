@@ -2,6 +2,7 @@
   "name": "@fastcampus/storybook",
   "packageManager": "yarn@3.6.3",
   "devDependencies": {
+    "@fastcampus/react-components-button": "workspace:^",
     "@fastcampus/react-components-layout": "workspace:^",
     "@fastcampus/themes": "workspace:^",
     "@storybook/addon-a11y": "^7.4.5",
@@ -37,5 +38,8 @@
   },
   "version": "",
   "readme": "ERROR: No README data found!",
-  "_id": "@fastcampus/storybook@"
+  "_id": "@fastcampus/storybook@",
+  "dependencies": {
+    "@fastcampus/react-hooks-button": "workspace:^"
+  }
 }
