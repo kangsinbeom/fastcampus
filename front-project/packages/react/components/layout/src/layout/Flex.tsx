@@ -24,8 +24,8 @@ const Flex = (props: FlexProps, ref: React.Ref<HTMLElement>) => {
   return React.createElement(
     as,
     {
+      ...props,
       ref,
-      // style.css.ts에서 추가한 내용 사용하는 방법
       className: clsx([
         BaseStyle,
         StyleSprinkles(
@@ -47,7 +47,6 @@ const Flex = (props: FlexProps, ref: React.Ref<HTMLElement>) => {
         background: background && vars.colors.$scale?.[background]?.[100],
         ...props.style,
       },
-      ...props,
     },
     children,
   );

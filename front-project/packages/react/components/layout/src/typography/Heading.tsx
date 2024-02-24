@@ -11,6 +11,7 @@ const Heading = (props: HeadingProps, ref: React.Ref<HTMLElement>) => {
   return React.createElement(
     as,
     {
+      ...props,
       ref,
       // style.css.ts에서 추가한 내용 사용하는 방법
       className: clsx([
@@ -27,8 +28,7 @@ const Heading = (props: HeadingProps, ref: React.Ref<HTMLElement>) => {
         color: color && vars.colors.$scale?.[color]?.[700],
         background: background && vars.colors.$scale?.[background]?.[100],
         ...props.style,
-      },k
-      ...props,
+      },
     },
     children,
   );

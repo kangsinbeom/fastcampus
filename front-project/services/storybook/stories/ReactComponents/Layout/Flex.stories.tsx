@@ -17,7 +17,6 @@ export const FlexStory = {
     boxShadow: "xl",
     borderRadius: "md",
     justify: "space-between",
-    align: "center",
     style: {
       width: "300px",
     },
