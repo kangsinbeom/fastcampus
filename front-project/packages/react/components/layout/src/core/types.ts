@@ -9,12 +9,12 @@ type AsProps = {
 type ElementProps = Omit<React.HTMLAttributes<HTMLElement>, "as">;
 
 // 최종적으로 as에서 svg에 대한 것만 빼고 나머지 다 가져오는 것
-export type AsElemetProps = AsProps & ElementProps;
-
-// parameters로 타입을 뽑아낼 수 있다
-export type StyleProps = Parameters<typeof StyleSprinkles>[0] & ColorProps;
+export type AsElementProps = AsProps & ElementProps;
 
 export type ColorProps = {
   color?: keyof typeof vars.colors.$scale;
   background?: keyof typeof vars.colors.$scale;
 };
+
+// parameters로 타입을 뽑아낼 수 있다
+export type StyleProps = Parameters<typeof StyleSprinkles>[0] & ColorProps;

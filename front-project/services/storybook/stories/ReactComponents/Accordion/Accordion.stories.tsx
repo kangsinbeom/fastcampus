@@ -72,6 +72,7 @@ export const AccordionTestStory = {
     >
       {items.map((item, index) => (
         <AccordionItem key={item.name} itemName={item.name}>
+          {/* 테스팅 시 접근이 쉽게 하기 위해 testid를 추가함 */}
           <AccordionButton data-testid={`button-${index}`}>
             <Heading color="gray" fontSize="lg">
               {item.name}
